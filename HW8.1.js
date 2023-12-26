@@ -27,13 +27,13 @@ function filter(array, callback) {
 
 
  function reduce(array, callback, initialValue) {
-    if (array.length === 0) {
+    if (array.length === 0 && initialValue.length === 0) {
         throw new TypeError('Reduce of empty array with no initial value');
       } else{
         let accumulator = initialValue !== undefined ? initialValue : array[0];
     const startIndex = initialValue !== undefined ? 0 : 1;
 
-        for(i = startIndex; i < array.length; i++) {
+        for(i = startIndex; i < array.length; i++ ) {
             accumulator = callback(accumulator, array[i], i, array)
         }
         return accumulator
@@ -48,3 +48,7 @@ function filter(array, callback) {
   };//   const array1 = [1, 2, 3, 4];
 
 //   const sumWithInitial = array1.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
+
+
+
+
