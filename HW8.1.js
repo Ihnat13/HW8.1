@@ -26,29 +26,20 @@ function filter(array, callback) {
  console.log(filter(arr, el => el > 1)) // [2, 3] - те саме, що arr.filter(el => el > 1)
 
 
- function reduce(array, callback, initialValue) {
-    if (array.length === 0 && initialValue.length === 0) {
-        throw new TypeError('Reduce of empty array with no initial value');
-      } else{
-        let accumulator = initialValue !== undefined ? initialValue : array[0];
-    const startIndex = initialValue !== undefined ? 0 : 1;
+ function reduce(array, callback, initialValue) { 
+  if (array.length === 0 && initialValue === undefined) {
+    throw new TypeError('Reduce of empty array with no initial value');
+  } 
+  let accumulator = initialValue !== undefined ? initialValue : array[0];
+  const startIndex = initialValue !== undefined ? 0 : 1;
 
-        for(i = startIndex; i < array.length; i++ ) {
-            accumulator = callback(accumulator, array[i], i, array)
-        }
-        return accumulator
-      }
+  for( let i = startIndex; i < array.length; i++ ) {
+    accumulator = callback(accumulator, array[i], i, array)
   }
+      return accumulator
+}
+  
+   console.log(reduce(arr, (sum, el) => sum + el, 0)) // 6 - те саме, що arr.reduce((sum, el) => sum + el, 0)
 
-
-  try {
-    console.log(reduce(arr, (sum, el) => sum + el, 0)) // 6 - те саме, що arr.reduce((sum, el) => sum + el, 0)
-  } catch (error){
-    console.error(error.message)
-  };//   const array1 = [1, 2, 3, 4];
-
-//   const sumWithInitial = array1.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
-
-
-
-
+// console.log([].reduce(() => 10, [1]))
+console.log(reduce([],() => 10), []);
