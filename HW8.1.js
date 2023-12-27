@@ -42,4 +42,4 @@ function filter(array, callback) {
    console.log(reduce(arr, (sum, el) => sum + el, 0)) // 6 - те саме, що arr.reduce((sum, el) => sum + el, 0)
 
 // console.log([].reduce(() => 10, [1]))
-console.log(reduce([],() => 10), []);
+console.log(reduce([],() => 10, [1]));
